@@ -1,0 +1,640 @@
+/* ========================================
+ * 1. CSS Variables (Color Palette)
+ * ========================================
+ */
+:root {
+    --bg-darkest: #121212;  /* Main BG */
+    --bg-dark: #1a1a1a;     /* Section BG */
+    --bg-medium: #2a2a2a;   /* Card BG */
+    --bg-light: #3a3a3a;    /* Card Hover */
+    
+    --text-light: #e0e0e0;  /* Main Text */
+    --text-lighter: #ffffff; /* Headings */
+    --text-muted: #aaaaaa;  /* Muted Text */
+    
+    --accent-blue: #007bff;
+    --accent-blue-hover: #0056b3;
+}
+
+/* ========================================
+ * 2. General & Reset (Footer Fix Applied)
+ * ========================================
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* بلاک HTML اصلاح شده */
+html {
+    scroll-behavior: smooth; /* Smooth scroll */
+    height: 100%;            /* برای حل مشکل فوتر */
+}
+
+/* بلاک body اصلاح شده */
+body {
+    font-family: 'Vazirmatn', sans-serif; 
+    background-color: var(--bg-darkest);
+    color: var(--text-light);
+    line-height: 1.7;
+
+    /* کدهای حل مشکل فوتر */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* این کد main است که فوتر را به پایین هل می‌دهد */
+main {
+    flex-grow: 1;
+}
+
+
+/* ========================================
+ * 3. Utility Classes
+ * ========================================
+ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+h1, h2, h3 {
+    color: var(--text-lighter);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.5rem; text-align: center; }
+h3 { font-size: 1.5rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-lighter);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-blue);
+    color: var(--text-lighter);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: var(--accent-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* حل مشکل اسکرول به خاطر هدر چسبان */
+section[id] {
+  scroll-margin-top: 5rem; /* یا هر مقداری که ارتفاع هدر شماست */
+}
+
+/* ========================================
+ * 4. Header & Navigation
+ * ========================================
+ */
+.main-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: rgba(26, 26, 26, 0.9); /* Translucent BG */
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--bg-medium);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-lighter);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 2rem; /* Changed from margin-right for LTR */
+}
+
+.main-nav a {
+    color: var(--text-light);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+    color: var(--accent-blue);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-lighter);
+    
+    /* این خطوط جدید هستند: */
+    display: flex;         /* لوگو و متن را افقی می‌چیند */
+    align-items: center;   /* آن‌ها را عمودی وسط‌چین می‌کند */
+    gap: 0.75rem;          /* یک فاصله کوچک بین لوگو و متن */
+}
+
+.logo-gif {
+    height: 50px;  /* ارتفاع گیف را تنظیم کنید (مثلاً ۴۰ پیکسل) */
+    width: auto;     /* عرض به صورت خودکار تنظیم شود */
+    border-radius: 50%; /* اگر می‌خواهید گیف هم دایره‌ای باشد */
+}
+
+/* (اختیاری) می‌توانید برای متن هم استایل جداگانه بدهید */
+.logo span {
+    padding-top: 5px; /* برای تنظیم دقیق‌تر جایگاه عمودی متن */
+}
+
+/* ========================================
+ * 5. Hero Section (Updated with Photo)
+ * ========================================
+ */
+#hero {
+    display: flex;
+    align-items: center;
+    min-height: 90vh;
+    background-color: var(--bg-dark);
+    padding: 3rem 0;
+}
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    width: 100%;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+}
+
+.hero-content .subtitle {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+/* کد تکراری از اینجا حذف شد.
+  کد #typed-subtitle شما اکنون پایین‌تر قرار دارد.
+*/
+
+.hero-photo {
+    flex-basis: 320px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.hero-photo img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    object-position: 50% 75%; /* تنظیم جایگاه عکس شما */
+    border-radius: 50%;
+    border: 5px solid var(--accent-blue);
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.3);
+}
+
+/* ========================================
+ * 6. Skills Section (New Categorized Style)
+ * ========================================
+ */
+#skills {
+    background-color: var(--bg-darkest);
+}
+
+/* این گرید اصلی است که دسته‌ها را مرتب می‌کند */
+.skills-grid {
+    display: grid;
+    /* در دسکتاپ ۳ ستون ایجاد می‌کند. 
+      می‌توانید '3' را به '4' تغییر دهید تا ۴ ستونه شود.
+    */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem; /* فاصله بین ستون‌ها و ردیف‌ها */
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left; /* تراز متن در ستون‌ها */
+}
+
+/* هر ستون مهارت */
+.skill-category {
+    /* ما به پس‌زمینه کارت نیازی نداریم، 
+       اما اگر دوست داشتید، می‌توانید این خط را اضافه کنید:
+       background-color: var(--bg-dark); 
+       padding: 1.5rem;
+       border-radius: 8px;
+    */
+}
+
+/* هدر هر دسته (آیکون و تیتر) */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* فاصله بین آیکون و تیتر */
+    margin-bottom: 1.25rem;
+}
+
+.skill-icon {
+    font-size: 1.75rem; /* اندازه ایموجی/آیکون */
+    /* اگر از آیکون واقعی استفاده کردید، به جای فونت، رنگ آن را ست کنید: */
+    /* color: var(--accent-blue); */
+}
+
+.skill-category h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-lighter);
+    margin-bottom: 0; /* ریست کردن مارجین پیش‌فرض */
+}
+
+/* لیست مهارت‌های زیر هر تیتر */
+.skill-category ul {
+    list-style: none; /* حذف گلوله‌ها (bullets) */
+    padding-left: 0; /* ریست کردن پدینگ راست (برای LTR به left تغییر دهید) */
+}
+
+.skill-category li {
+    font-size: 1rem;
+    color: var(--text-muted); /* رنگ متن مهارت‌ها */
+    margin-bottom: 0.75rem; /* فاصله بین هر مهارت */
+    padding-left: 1.5rem; /* ایجاد تورفتگی (برای LTR به left تغییر دهید) */
+    position: relative;
+}
+
+/* ایجاد یک گلوله (bullet) سفارشی آبی‌رنگ شبیه نمونه */
+.skill-category li::before {
+    content: '•'; /* کاراکتر گلوله */
+    color: var(--accent-blue);
+    font-weight: bold;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0; /* برای LTR به left: 0; تغییر دهید */
+    top: -2px; /* تنظیم دقیق جایگاه عمودی */
+}
+
+
+/* ========================================
+ * بخش ریسپانسیو برای مهارت‌ها
+ * ========================================
+ */
+
+/* این کدها را به بخش @media (max-width: 768px) اضافه کنید 
+   یا اگر آن بخش را ندارید، این بلوک را به انتهای CSS اضافه کنید
+*/
+@media (max-width: 992px) {
+    /* در تبلت ۲ ستونه شود */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* ... کدهای ریسپانسیو قبلی شما ... 
+    */
+
+    /* در موبایل ۱ ستونه شود */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .skill-category {
+        text-align: center; /* در موبایل همه‌چیز وسط‌چین شود */
+    }
+    
+    .category-header {
+        justify-content: center; /* آیکون و تیتر وسط‌چین شوند */
+    }
+    
+    .skill-category ul {
+         padding-left: 0;
+    }
+
+    .skill-category li {
+        padding-left: 0;
+    }
+    
+    /* گلوله سفارشی را در موبایل مخفی می‌کنیم */
+    .skill-category li::before {
+        display: none;
+    }
+}
+
+/* ========================================
+ * 7. Projects Section
+ * ========================================
+ */
+#projects {
+    background-color: var(--bg-dark);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--bg-medium);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 123, 255, 0.2);
+}
+
+.project-card img {
+    width: 100%;
+    height:300px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    margin-bottom: 0.5rem;
+}
+
+.project-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.project-tags {
+    margin-bottom: 1.5rem;
+}
+
+.project-tags .tag {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 15px;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.project-links a {
+    color: var(--text-lighter);
+    font-weight: 500;
+    margin-right: 1.5rem;
+}
+
+.project-links a:hover {
+    text-decoration: underline;
+    color: var(--text-lighter);
+}
+
+/* ========================================
+ * 8. Contact Section
+ * ========================================
+ */
+#contact {
+    background-color: var(--bg-darkest);
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-content h2 {
+    margin-bottom: 1.5rem;
+}
+
+.contact-content p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+/* ========================================
+ * 9. Footer
+ * ========================================
+ */
+footer {
+    background-color: var(--bg-dark);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--bg-medium);
+    margin-top: 3rem; /* این مارجین حالا دیگر لازم نیست اما ضرری هم ندارد */
+}
+
+footer p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+ * 10. Typed.js Style (اصلاح شده)
+ * ========================================
+ */
+/* این بلاک کامل #typed-subtitle شماست */
+#typed-subtitle {
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* ========================================
+ * 11. Resume / Experience Section
+ * ========================================
+ */
+#resume {
+    background-color: var(--bg-dark); /* همان رنگ بخش پروژه‌ها */
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* دو ستون مساوی */
+    gap: 4rem; /* فاصله بین دو ستون */
+    max-width: 1000px; /* محدود کردن عرض برای خوانایی بهتر */
+    margin: 0 auto;
+}
+
+.resume-column {
+    /* هر ستون (تحصیلات و تجربه) */
+}
+
+.column-title {
+    font-size: 1.8rem;
+    color: var(--text-lighter);
+    margin-bottom: 2.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--accent-blue); /* خط زیر تیتر ستون */
+    display: inline-block; /* باعث می‌شود خط فقط به اندازه متن باشد */
+}
+
+/* هر آیتم در تایم‌لاین (هر شغل یا مدرک) */
+.resume-item {
+    padding-left: 2rem; /* فضا برای خط تایم‌لاین */
+    border-left: 2px solid var(--bg-light); /* خط عمودی تایم‌لاین */
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+/* دایره روی خط تایم‌لاین */
+.resume-item::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: -7px; /* تنظیم دقیق روی خط (نصف عرض + ضخامت خط) */
+    width: 14px;
+    height: 14px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    border: 2px solid var(--bg-dark); /* ایجاد حفره در وسط */
+}
+
+.resume-item h4 {
+    font-size: 1.25rem;
+    color: var(--text-lighter);
+    margin-bottom: 0.25rem;
+}
+
+.resume-date {
+    display: inline-block;
+    background-color: var(--bg-medium);
+    color: var(--text-light);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 15px;
+    margin-bottom: 0.75rem;
+}
+
+.resume-place {
+    color: var(--accent-blue); /* نام شرکت یا دانشگاه */
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+/* لیست جزئیات (بولِت پوینت‌ها) */
+.resume-item ul {
+    list-style-type: disc; /* استفاده از گلوله‌های پیش‌فرض */
+    padding-left: 1.25rem;
+    color: var(--text-muted);
+}
+
+.resume-item ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+/* ========================================
+ * 12. Responsive
+ * ========================================
+ */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+
+    .main-header .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .main-nav ul {
+        padding: 0;
+    }
+    
+    .main-nav li {
+        margin: 0 0.75rem;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* استایل‌های جدید برای Hero در موبایل */
+    #hero {
+        min-height: auto;
+    }
+
+    .hero-grid {
+        flex-direction: column-reverse; 
+        gap: 2rem;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-photo {
+         margin-bottom: 1rem;
+    }
+
+    .hero-photo img {
+        width: 250px;
+        height: 250px;
+    }
+    .resume-grid {
+    grid-template-columns: 1fr; /* تک‌ستونه شدن در موبایل */
+    gap: 0; /* حذف فاصله ستون‌ها */
+}
+
+.resume-column {
+    margin-bottom: 3rem; /* ایجاد فاصله بین بخش تحصیلات و تجربه */
+}
+
+.column-title {
+    margin-bottom: 2rem;
+}
+}
